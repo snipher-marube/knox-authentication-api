@@ -42,9 +42,9 @@ class RegisterSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             email=validated_data['email'],
             first_name=validated_data.get('first_name', ''),  # Optional field
-            last_name=validated_data.get('last_name', '')    # Optional field
+            last_name=validated_data.get('last_name', ''),    # Optional field
+            password=validated_data['password']
         )
-        # Set the hashed password
-        user.set_password(validated_data['password'])
+       
         user.save()
         return user
